@@ -17,8 +17,6 @@ RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
   end
 
   it 'returns Hello world' do
-    gen = generator
-
-    expect(gen.invoke_all).to eq(['Hello world'])
+    expect(generator.invoke_all).to eq(['Hello world'])
   end
 end

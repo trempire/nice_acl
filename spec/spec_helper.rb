@@ -15,4 +15,3 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
-
