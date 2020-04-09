@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "nice_acl"
 
-require 'rails/all'
+require "rails/all"
 require "ammeter/init"
 
 RSpec.configure do |config|

@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-require 'rails/generators/active_record'
-require 'active_support/core_ext'
-require 'erb'
+require "rails/generators/active_record"
+require "active_support/core_ext"
+require "erb"
 
 module ActiveRecord
   module Generators
     class NiceACLGenerator < ActiveRecord::Generators::Base
       # source_root File.expand_path('templates', __dir__)
 
-      argument :user_cname, type: :string, default: 'User', banner: 'User'
+      argument :user_cname, type: :string, default: "User", banner: "User"
 
       def generate_model
-        invoke 'active_record:model', [name], migration: false
+        invoke "active_record:model", [name], migration: false
       end
 
       def inject_role_class
@@ -27,7 +27,7 @@ module ActiveRecord
       private
 
       def model_path
-        File.join('app', 'models', "#{file_path}.rb")
+        File.join("app", "models", "#{file_path}.rb")
       end
 
       def model_content
@@ -35,7 +35,7 @@ module ActiveRecord
       end
 
       def rails5?
-        Rails.version.start_with? '5'
+        Rails.version.start_with? "5"
       end
 
       def migration_version
