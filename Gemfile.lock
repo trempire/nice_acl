@@ -49,7 +49,7 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
-    parser (2.7.0.5)
+    parser (2.7.1.0)
       ast (~> 2.4.0)
     pry (0.13.0)
       coderay (~> 1.1)
@@ -103,7 +103,12 @@ GEM
       rexml
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-performance (1.5.2)
+      rubocop (>= 0.71.0)
     ruby-progressbar (1.10.1)
+    standard (0.2.3)
+      rubocop (~> 0.80.1)
+      rubocop-performance (~> 1.5.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.6)
@@ -122,7 +127,7 @@ DEPENDENCIES
   pry-byebug
   rake
   rspec
-  rubocop
+  standard
   yard
 
 BUNDLED WITH
