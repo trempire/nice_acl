@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  standardrb:
+  StandardRB:
     runs-on: ubuntu-latest
     steps:
       - name: standardrb
