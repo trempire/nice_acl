@@ -1,6 +1,6 @@
 commit-msg:
   scripts:
-    "autofill_ticket":
+    autofill-ticket:
       runner: bash
 pre-commit:
   commands:
@@ -8,4 +8,7 @@ pre-commit:
       files: git diff --name-only master
       glob: "*.{rb}"
       run: bundle exec standardrb {files}
-
+post-checkout:
+  scripts:
+    bundle-check-install:
+      runner: bash
