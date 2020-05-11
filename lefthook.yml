@@ -1,0 +1,11 @@
+commit-msg:
+  scripts:
+    "autofill_ticket":
+      runner: bash
+pre-commit:
+  commands:
+    standard:
+      files: git diff --name-only master
+      glob: "*.{rb}"
+      run: bundle exec standardrb {files}
+

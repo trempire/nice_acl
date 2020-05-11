@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# If branch has name as NA-XXXXX_branch 
+# it adds NA-XXXXX into start of a message commit   
+# Example "NA-XXXXX message commit"
+
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+
+if [[ "$BRANCH_NAME" =~ (NA-[[:digit:]]{2}) ]]; then 
+  sed -i.bak -e "1s%^%${BASH_REMATCH[1]} %" "$1"
+fi 
