@@ -7,25 +7,35 @@ RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
 
   before { prepare_destination }
 
-  it "runs copy_roles_migration command" do
-    gen = generator
-    allow(gen).to receive(:copy_roles_migration)
-
-    gen.invoke_all
-
-    expect(gen).to have_received :copy_roles_migration
-  end
-
   describe "#copy_roles_migration" do
     it "copies nice_acl_create_roles template to migrate folder" do
-      run_generator
+      invoke_task :copy_roles_migration
 
       file = migration_file("db/migrate/create_nice_acl_roles.rb")
 
       expect(file).to exist
+      expect(file).to have_correct_syntax
       expect(file).to have_method(:change)
       expect(file).to contain(/create_table :nice_acl_roles/)
       expect(file).to contain(/string :name/)
+    end
+  end
+
+  describe "#copy_permissions_roles_migration" do
+    it "copies create_nice_acl_premissions_roles template to migrate folder" do
+      invoke_task :copy_permissions_roles_migration
+
+      file = migration_file("db/migrate/create_nice_acl_permissions_roles.rb")
+
+      expect(file).to exist
+      expect(file).to have_correct_syntax
+      expect(file).to have_method(:change)
+      expect(file).to contain(/create_table :nice_acl_permissions_roles/)
+      expect(file).to contain(/belongs_to :nice_acl_permission/)
+      expect(file).to contain(/belongs_to :nice_acl_role/)
+      expect(file).to contain(/add_index :nice_acl_permissions_roles/)
+      expect(file).to contain(/[nice_acl_permission_id nice_acl_role_id]/)
+      expect(file).to contain(/unique: true/)
     end
   end
 end

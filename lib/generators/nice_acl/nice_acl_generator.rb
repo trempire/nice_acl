@@ -11,6 +11,10 @@ module NiceACL
       def copy_roles_migration
         migration_template "create_nice_acl_roles.rb", "db/migrate/create_nice_acl_roles.rb"
       end
+
+      def copy_permissions_roles_migration
+        migration_template "create_nice_acl_permissions_roles.rb", "db/migrate/create_nice_acl_permissions_roles.rb"
+      end
     end
   end
 end
