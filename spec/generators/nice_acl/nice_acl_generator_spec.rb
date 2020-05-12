@@ -38,4 +38,22 @@ RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
       expect(file).to contain(/unique: true/)
     end
   end
+
+  describe "#copy_roles_users_migration" do
+    it "copies create_nice_acl_roles_users template to migrate folder" do
+      invoke_task :copy_roles_users_migration
+
+      file = migration_file("db/migrate/create_nice_acl_roles_users.rb")
+
+      expect(file).to exist
+      expect(file).to have_correct_syntax
+      expect(file).to have_method(:change)
+      expect(file).to contain(/create_table :nice_acl_roles_users/)
+      expect(file).to contain(/belongs_to :nice_acl_role/)
+      expect(file).to contain(/belongs_to :user/)
+      expect(file).to contain(/add_index :nice_acl_roles_users/)
+      expect(file).to contain(/[nice_acl_role_id user_id]/)
+      expect(file).to contain(/unique: true/)
+    end
+  end
 end
