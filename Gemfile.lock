@@ -19,6 +19,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    activemodel (6.0.3)
+      activesupport (= 6.0.3)
+    activerecord (6.0.3)
+      activemodel (= 6.0.3)
+      activesupport (= 6.0.3)
     activesupport (6.0.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
@@ -129,6 +134,7 @@ GEM
     solargraph-standardrb (0.0.1)
       solargraph (~> 0.39.1)
       standard (~> 0.2.4)
+    sqlite3 (1.4.2)
     standard (0.2.5)
       rubocop (~> 0.80.1)
       rubocop-performance (~> 1.5.2)
@@ -145,6 +151,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
   ammeter
   bundler
   nice_acl!
@@ -152,6 +159,7 @@ DEPENDENCIES
   rake
   rspec
   solargraph-standardrb
+  sqlite3
   standard
   yard
 
