@@ -20,9 +20,12 @@ RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
     it "copies nice_acl_create_roles template to migrate folder" do
       run_generator
 
-      file = migration_file("db/migrate/nice_acl_create_roles.rb")
+      file = migration_file("db/migrate/create_nice_acl_roles.rb")
 
       expect(file).to exist
+      expect(file).to have_method(:change)
+      expect(file).to contain(/create_table :nice_acl_roles/)
+      expect(file).to contain(/string :name/)
     end
   end
 end

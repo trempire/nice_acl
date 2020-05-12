@@ -9,7 +9,7 @@ module NiceACL
       namespace :nice_acl
 
       def copy_roles_migration
-        migration_template "nice_acl_create_roles.rb", "db/migrate/nice_acl_create_roles.rb"
+        migration_template "create_nice_acl_roles.rb", "db/migrate/create_nice_acl_roles.rb"
       end
     end
   end
