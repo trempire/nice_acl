@@ -1,8 +1,8 @@
 require "spec_helper"
 
-require "generators/nice_acl/nice_acl_generator"
+require "generators/nice_acl/migrations_generator"
 
-RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
+RSpec.describe NiceAcl::Generators::MigrationsGenerator, type: :generator do
   destination File.expand_path("../../../../spec/tmp", __FILE__)
 
   before { prepare_destination }

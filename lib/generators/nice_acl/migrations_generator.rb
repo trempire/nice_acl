@@ -1,9 +1,9 @@
 require "rails/generators/active_record"
 
-module NiceACL
+module NiceAcl
   module Generators
-    class NiceACLGenerator < ActiveRecord::Generators::Base
-      source_root File.expand_path("../templates", __FILE__)
+    class MigrationsGenerator < ActiveRecord::Generators::Base
+      source_root File.expand_path("../templates/migrations", __FILE__)
 
       argument :name, type: :string, default: "User"
       namespace :nice_acl

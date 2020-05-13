@@ -1,4 +1,4 @@
-class CreateNiceACLRolesUsers < ActiveRecord::Migration
+class CreateNiceAclRolesUsers < ActiveRecord::Migration
   def change
     create_table :nice_acl_roles_users do |t|
       t.belongs_to :nice_acl_role, index: false
