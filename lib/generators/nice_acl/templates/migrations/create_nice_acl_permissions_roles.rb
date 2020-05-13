@@ -1,4 +1,4 @@
-class CreateNiceACLPermissionsRoles < ActiveRecord::Migration
+class CreateNiceAclPermissionsRoles < ActiveRecord::Migration
   def change
     create_table :nice_acl_permissions_roles do |t|
       t.belongs_to :nice_acl_permission, index: false

@@ -1,4 +1,4 @@
-class CreateNiceACLPermissions < ActiveRecord::Migration
+class CreateNiceAclPermissions < ActiveRecord::Migration
   def change
     create_table :nice_acl_permissions do |t|
       t.string :name
