@@ -31,7 +31,7 @@ RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
       expect(file).to have_correct_syntax
       expect(file).to have_method(:change)
       expect(file).to contain(/create_table :nice_acl_permissions_roles/)
-      expect(file).to contain(/belongs_to :nice_acl_permission/)
+      expect(file).to contain(/belongs_to :nice_acl_permission, index: false/)
       expect(file).to contain(/belongs_to :nice_acl_role/)
       expect(file).to contain(/add_index :nice_acl_permissions_roles/)
       expect(file).to contain(/[nice_acl_permission_id nice_acl_role_id]/)
@@ -49,7 +49,7 @@ RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
       expect(file).to have_correct_syntax
       expect(file).to have_method(:change)
       expect(file).to contain(/create_table :nice_acl_roles_users/)
-      expect(file).to contain(/belongs_to :nice_acl_role/)
+      expect(file).to contain(/belongs_to :nice_acl_role, index: false/)
       expect(file).to contain(/belongs_to :user/)
       expect(file).to contain(/add_index :nice_acl_roles_users/)
       expect(file).to contain(/[nice_acl_role_id user_id]/)

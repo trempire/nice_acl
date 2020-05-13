@@ -1,7 +1,7 @@
 class CreateNiceACLRolesUsers < ActiveRecord::Migration
   def change
     create_table :nice_acl_roles_users do |t|
-      t.belongs_to :nice_acl_role
+      t.belongs_to :nice_acl_role, index: false
       t.belongs_to :user
     end
 
