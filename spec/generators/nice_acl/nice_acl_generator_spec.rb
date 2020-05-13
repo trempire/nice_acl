@@ -56,4 +56,20 @@ RSpec.describe NiceACL::Generators::NiceACLGenerator, type: :generator do
       expect(file).to contain(/unique: true/)
     end
   end
+
+  describe "#copy_permissions_migration" do
+    it "copies create_nice_acl_permissions template to migrate folder" do
+      invoke_task :copy_permissions_migration
+
+      file = migration_file("db/migrate/create_nice_acl_permissions.rb")
+
+      expect(file).to exist
+      expect(file).to have_correct_syntax
+      expect(file).to have_method(:change)
+      expect(file).to contain(/create_table :nice_acl_permissions/)
+      expect(file).to contain(/string :name/)
+      expect(file).to contain(/string :model/)
+      expect(file).to contain(/string :action/)
+    end
+  end
 end
