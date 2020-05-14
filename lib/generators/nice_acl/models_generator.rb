@@ -21,6 +21,10 @@ module NiceAcl
         create_model(:roles_user)
       end
 
+      def create_permissions_role_model
+        create_model(:permissions_role)
+      end
+
       private
 
       def create_model(model_name)
