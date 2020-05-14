@@ -17,11 +17,15 @@ module NiceAcl
         create_model(:permission)
       end
 
+      def create_roles_user_model
+        create_model(:roles_user)
+      end
+
       private
 
       def create_model(model_name)
         invoke "active_record:model", ["nice_acl/#{model_name}"], migration: false
-        inject_into_class(model_path(model_name), "NiceAcl::#{model_name.to_s.capitalize}", model_content(model_name))
+        inject_into_class(model_path(model_name), "NiceAcl::#{model_name.to_s.camelcase}", model_content(model_name))
       end
 
       def model_content(model)
