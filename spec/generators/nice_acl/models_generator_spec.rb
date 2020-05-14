@@ -33,4 +33,18 @@ RSpec.describe NiceAcl::Generators::ModelsGenerator, type: :generator do
       expect(model_file).to contain(/has_many :nice_acl_permissions_roles, class: "NiceAcl:PermissionsRole"/)
     end
   end
+
+  describe "#create_roles_user_model" do
+    it "creates app/model/nice_acl/roles_user.rb class" do
+      invoke_task :create_roles_user_model
+
+      model_file = file("app/models/nice_acl/roles_user.rb")
+
+      expect(model_file).to exist
+      expect(model_file).to have_correct_syntax
+      expect(model_file).to contain(/class NiceAcl::RolesUser < ApplicationRecord/)
+      expect(model_file).to contain(/belongs_to :user/)
+      expect(model_file).to contain(/belongs_to :nice_acl_role, class: "NiceAcl::Role"/)
+    end
+  end
 end
