@@ -6,7 +6,6 @@ module NiceAcl
       source_root File.expand_path("../templates/migrations", __FILE__)
 
       argument :name, type: :string, default: "User"
-      namespace :nice_acl
 
       def copy_roles_migration
         migration_template "create_nice_acl_roles.rb", "db/migrate/create_nice_acl_roles.rb"

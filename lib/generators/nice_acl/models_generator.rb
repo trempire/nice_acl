@@ -6,8 +6,7 @@ module NiceAcl
     class ModelsGenerator < ActiveRecord::Generators::Base
       source_root File.expand_path("../templates/models", __FILE__)
 
-      argument :name, type: :string, default: "Role"
-      namespace :nice_acl
+      argument :name, type: :string, default: "User"
 
       def create_role_model
         create_model(:role)
@@ -28,7 +27,9 @@ module NiceAcl
       private
 
       def create_model(model_name)
-        invoke "active_record:model", ["nice_acl/#{model_name}"], migration: false
+        generator = ModelsGenerator.new([])
+        generator.destination_root = destination_root
+        generator.invoke "active_record:model", ["nice_acl/#{model_name}"], migration: false
         inject_into_class(model_path(model_name), "NiceAcl::#{model_name.to_s.camelcase}", model_content(model_name))
       end
 
