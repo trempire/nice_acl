@@ -2,7 +2,8 @@ require "spec_helper"
 
 require "generators/nice_acl/models_generator"
 
-RSpec.describe NiceAcl::Generators::ModelsGenerator, type: :generator do
+# use :: as test create own class NiceAcl::Generators::ModelsGenerator
+RSpec.describe ::NiceAcl::Generators::ModelsGenerator, type: :generator do
   destination File.expand_path("../../../../spec/tmp", __FILE__)
 
   before { prepare_destination }
